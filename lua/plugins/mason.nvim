@@ -1,0 +1,6 @@
+opts = {
+  ensure_installed = {
+    "stylua",
+    "shfmt",
+  },
+}
