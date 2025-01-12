@@ -1,4 +1,6 @@
+---@diagnostic disable: need-check-nil
 return {
+  { import = "lazyvim.plugins.extras.lang.typescript" },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -12,6 +14,41 @@ return {
         ts_ls = {
           enabled = false,
         },
+        -- these settings come from the eslint docs
+        -- eslint = {
+        --   settings = {
+        --     codeAction = {
+        --       disableRuleComment = {
+        --         enable = true,
+        --         location = "separateLine",
+        --       },
+        --       showDocumentation = {
+        --         enable = true,
+        --       },
+        --     },
+        --     codeActionOnSave = {
+        --       enable = false,
+        --       mode = "all",
+        --     },
+        --     experimental = {
+        --       useFlatConfig = false,
+        --     },
+        --     format = true,
+        --     nodePath = "",
+        --     onIgnoredFiles = "off",
+        --     problems = {
+        --       shortenToSingleLine = false,
+        --     },
+        --     quiet = false,
+        --     rulesCustomizations = {},
+        --     run = "onType",
+        --     useESLintClass = false,
+        --     validate = "on",
+        --     workingDirectory = {
+        --       mode = "location",
+        --     },
+        --   },
+        -- },
         vtsls = {
           -- explicitly add default filetypes, so that we can extend
           -- them in related extras
@@ -24,6 +61,10 @@ return {
             "typescript.tsx",
           },
           settings = {
+            workingDirectory = { mode = "auto" },
+            rulesCustomizations = {},
+            run = "onType",
+            nodePath = "",
             complete_function_calls = true,
             vtsls = {
               enableMoveToFileCodeAction = true,
@@ -42,13 +83,13 @@ return {
               },
               insertSpaceBeforeFunctionParenthesis = true,
               inlayHints = {
-                enumMemberValues = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
+                -- enumMemberValues = { enabled = true },
+                -- functionLikeReturnTypes = { enabled = true },
                 -- parameterNames = { enabled = "literals" },
-                parameterNames = { enabled = false },
-                parameterTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                variableTypes = { enabled = false },
+                -- parameterNames = { enabled = false },
+                -- parameterTypes = { enabled = true },
+                -- propertyDeclarationTypes = { enabled = true },
+                -- variableTypes = { enabled = false },
               },
             },
           },
@@ -56,6 +97,7 @@ return {
             {
               "gD",
               function()
+                ---@diagnostic disable-next-line: missing-parameter
                 local params = vim.lsp.util.make_position_params()
                 LazyVim.lsp.execute({
                   command = "typescript.goToSourceDefinition",
@@ -121,28 +163,37 @@ return {
           LazyVim.lsp.on_attach(function(client, buffer)
             client.commands["_typescript.moveToFileRefactoring"] = function(command, ctx)
               ---@type string, string, lsp.Range
+              ---@diagnostic disable-next-line: assign-type-mismatch
               local action, uri, range = unpack(command.arguments)
 
               local function move(newf)
+                ---@diagnostic disable-next-line: param-type-mismatch
                 client.request("workspace/executeCommand", {
                   command = command.command,
                   arguments = { action, uri, range, newf },
                 })
               end
 
+              ---@diagnostic disable-next-line: param-type-mismatch
               local fname = vim.uri_to_fname(uri)
+              ---@diagnostic disable-next-line: param-type-mismatch
               client.request("workspace/executeCommand", {
                 command = "typescript.tsserverRequest",
                 arguments = {
                   "getMoveToRefactoringFileSuggestions",
                   {
                     file = fname,
+                    ---@diagnostic disable-next-line: undefined-field
                     startLine = range.start.line + 1,
+                    ---@diagnostic disable-next-line: undefined-field
                     startOffset = range.start.character + 1,
+                    ---@diagnostic disable-next-line: undefined-field
                     endLine = range["end"].line + 1,
+                    ---@diagnostic disable-next-line: undefined-field
                     endOffset = range["end"].character + 1,
                   },
                 },
+                ---@diagnostic disable-next-line: param-type-mismatch
               }, function(_, result)
                 ---@type string[]
                 local files = result.body.files
