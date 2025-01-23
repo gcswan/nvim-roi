@@ -1,7 +1,13 @@
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
-  { "sainnhe/sonokai" },
+  {
+    "sainnhe/sonokai",
+    config = function()
+      vim.g.sonokai_dim_inactive_windows = 1
+      -- Any other sonokai settings you want
+    end,
+  },
   {
     "catppuccin/nvim",
     lazy = true,
