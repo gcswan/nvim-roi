@@ -5,6 +5,8 @@ return {
     "sainnhe/sonokai",
     config = function()
       vim.g.sonokai_dim_inactive_windows = 1
+      vim.g.sonokai_better_performance = 1
+      vim.g.sonokai_enable_italic = 1
       -- Any other sonokai settings you want
     end,
   },
