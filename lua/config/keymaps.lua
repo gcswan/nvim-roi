@@ -11,3 +11,11 @@ map("n", "<C-k>", require("nvim-tmux-navigation").NvimTmuxNavigateUp)
 map("n", "<C-l>", require("nvim-tmux-navigation").NvimTmuxNavigateRight)
 map("n", "<C-\\>", require("nvim-tmux-navigation").NvimTmuxNavigateLastActive)
 map("n", "<C-Space>", require("nvim-tmux-navigation").NvimTmuxNavigateNext)
+
+-- swtitches camel case to snake case
+map(
+  "n",
+  "<Leader>ck",
+  '<cmd>lua require("./functions/switch_case").switch_case()<CR>',
+  { desc = "switch case", noremap = true, silent = true }
+)
