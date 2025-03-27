@@ -12,3 +12,5 @@ vim.g.lazyvim_eslint_auto_format = true
 -- If no prettier config file is found, the formatter will not be used
 vim.g.lazyvim_prettier_needs_config = false
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
+
+vim.opt.directory = "/tmp"

@@ -19,3 +19,24 @@ map(
   '<cmd>lua require("./functions/switch_case").switch_case()<CR>',
   { desc = "switch case", noremap = true, silent = true }
 )
+
+-- Toggle LSP for Markdown files
+map(
+  "n",
+  "<Leader>tm",
+  '<cmd>lua require("functions.toggle_markdown_lsp").toggle_markdown_lsp()<CR>',
+  { desc = "Toggle Markdown LSP", noremap = true, silent = true }
+)
+
+-- Toggle auto-format for Markdown files on save
+map(
+  "n",
+  "<Leader>tf",
+  '<cmd>lua require("functions.markdown_format").toggle_auto_format()<CR>',
+  { desc = "Toggle Markdown Auto-Format", noremap = true, silent = true }
+)
+
+-- Toggle LSP and Format on Save
+map("n", "<leader>tl", function() require("functions.toggle_lsp_format").toggle_lsp() end, { desc = "Toggle LSP" })
+map("n", "<leader>tp", function() require("functions.toggle_lsp_format").toggle_format_on_save() end, { desc = "Toggle Format on Save" })
+map("n", "<leader>ta", function() require("functions.toggle_lsp_format").toggle_lsp_and_format() end, { desc = "Toggle LSP and Format on Save" })
