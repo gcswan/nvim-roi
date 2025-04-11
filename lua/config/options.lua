@@ -14,3 +14,15 @@ vim.g.lazyvim_prettier_needs_config = false
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 
 vim.opt.directory = "/tmp"
+
+-- Specify the path to Node.js v22 LTS for Neovim
+vim.g.node_host_prog = '/Users/gswan/.nvm/versions/node/v22.5.0/bin/node'
+
+-- Configure for LSP processes
+vim.g.lsp_utils_node_binary = '/Users/gswan/.nvm/versions/node/v22.5.0/bin/node'
+
+-- Set environment variables for all spawned processes
+vim.env.PATH = '/Users/gswan/.nvm/versions/node/v22.5.0/bin:' .. vim.env.PATH
+
+-- Ensure Mason uses this Node.js version
+vim.g.mason_node_executable = '/Users/gswan/.nvm/versions/node/v22.5.0/bin/node'

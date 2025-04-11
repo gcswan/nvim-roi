@@ -328,7 +328,7 @@ return {
       fm.setup({
         theme = "retrowave",
         brightness = 0.05,
-        glow = false,
+        glow = true,
         transparent = false,
         styles = {
           comments = {},
@@ -340,7 +340,10 @@ return {
           keywords = {},
           types = {},
         },
-        colors = {},
+        colors = {
+          orange = "#edbb47",
+          red = "#fa4863",
+        },
         overrides = {},
         plugins = {
           bufferline = true,
@@ -369,8 +372,6 @@ return {
           wk = true,
         },
       })
-
-      vim.cmd.colorscheme("fluoromachine")
     end,
   },
 
@@ -381,12 +382,12 @@ return {
       -- colorscheme = "gruvbox",
       -- colorscheme = "dracula",
       -- colorscheme = "kanagawa",
-      -- colorscheme = "sonokai",
+      colorscheme = "sonokai",
       -- colorscheme = "cyberdream",
       -- colorscheme = "catppuccin",
       -- colorscheme = "gruvbox-material",
       -- colorscheme = "nordic",
-      colorscheme = "fluoromachine",
+      -- colorscheme = "fluoromachine",
     },
   },
 }
