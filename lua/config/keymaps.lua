@@ -37,6 +37,16 @@ map(
 )
 
 -- Toggle LSP and Format on Save
-map("n", "<leader>tl", function() require("functions.toggle_lsp_format").toggle_lsp() end, { desc = "Toggle LSP" })
-map("n", "<leader>tp", function() require("functions.toggle_lsp_format").toggle_format_on_save() end, { desc = "Toggle Format on Save" })
-map("n", "<leader>ta", function() require("functions.toggle_lsp_format").toggle_lsp_and_format() end, { desc = "Toggle LSP and Format on Save" })
+map("n", "<leader>tl", function()
+  require("functions.toggle_lsp_format").toggle_lsp()
+end, { desc = "Toggle LSP" })
+map("n", "<leader>tp", function()
+  require("functions.toggle_lsp_format").toggle_format_on_save()
+end, { desc = "Toggle Format on Save" })
+map("n", "<leader>ta", function()
+  require("functions.toggle_lsp_format").toggle_lsp_and_format()
+end, { desc = "Toggle LSP and Format on Save" })
+
+-- Toggle Claude Code
+map("n", "<C-g>", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code", noremap = true, silent = true })
+map("t", "<C-g>", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code", noremap = true, silent = true })

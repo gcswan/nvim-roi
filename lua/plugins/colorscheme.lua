@@ -177,7 +177,6 @@ return {
     opts = {
       integrations = {
         cmp = true,
-        fzf = true,
         gitsigns = true,
         indent_blankline = { enabled = true },
         lsp_trouble = true,
