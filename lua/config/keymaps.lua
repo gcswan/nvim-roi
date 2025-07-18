@@ -47,6 +47,14 @@ map("n", "<leader>ta", function()
   require("functions.toggle_lsp_format").toggle_lsp_and_format()
 end, { desc = "Toggle LSP and Format on Save" })
 
+-- Copy file path keymaps
+map("n", "<leader>cw", function()
+  require("functions.copy_path").copy_file_path()
+end, { desc = "Copy file path" })
+map("n", "<leader>cp", function()
+  require("functions.copy_path").copy_file_path_with_line()
+end, { desc = "Copy file path with line" })
+
 -- Toggle Claude Code
 map("n", "<C-g>", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code", noremap = true, silent = true })
 map("t", "<C-g>", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code", noremap = true, silent = true })
