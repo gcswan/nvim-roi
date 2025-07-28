@@ -58,3 +58,14 @@ end, { desc = "Copy file path with line" })
 -- Toggle Claude Code
 map("n", "<C-g>", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code", noremap = true, silent = true })
 map("t", "<C-g>", "<cmd>ClaudeCode<CR>", { desc = "Toggle Claude Code", noremap = true, silent = true })
+
+-- Arial
+map("n", "<leader>at", "<cmd>AerialToggle!<CR>", { desc = "Toggle Aerial" })
+map("n", "<leader>ao", "<cmd>AerialOpen<CR>", { desc = "Open Aerial" })
+map("n", "<leader>ac", "<cmd>AerialClose<CR>", { desc = "Close Aerial" })
+map("n", "<leader>af", "<cmd>AerialNavToggle<CR>", { desc = "Aerial Float Nav" })
+
+map("n", "<leader>an", "<cmd>AerialNext<CR>", { desc = "Aerial Next Symbol" })
+map("n", "<leader>ap", "<cmd>AerialPrev<CR>", { desc = "Aerial Prev Symbol" })
+map("n", "<leader>aun", "<cmd>AerialNextUp<CR>", { desc = "Aerial Next Up Level" })
+map("n", "<leader>aup", "<cmd>AerialPrevUp<CR>", { desc = "Aerial Prev Up Level" })

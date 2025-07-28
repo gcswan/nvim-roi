@@ -6,7 +6,7 @@ return {
     opts = {},
     config = function()
       require("tokyonight").setup({
-        style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
         transparent = true, -- Enable this to disable setting the background color
         terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
         styles = {
@@ -22,19 +22,19 @@ return {
         },
         sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
         day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-        hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-        dim_inactive = false, -- dims inactive windows
-        lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+        hide_inactive_statusline = true, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+        dim_inactive = true, -- dims inactive windows
+        lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
         on_colors = function(colors)
           colors.hint = colors.orange
           colors.error = "#ff0000"
         end,
         on_highlights = function(highlights, colors)
           -- Make backgrounds transparent
-          highlights.Normal = { bg = "none" }
-          highlights.NormalFloat = { bg = "none" }
-          highlights.NormalNC = { bg = "none" }
-          highlights.SignColumn = { bg = "none" }
+          -- highlights.Normal = { bg = "none" }
+          -- highlights.NormalFloat = { bg = "none" }
+          -- highlights.NormalNC = { bg = "none" }
+          -- highlights.SignColumn = { bg = "none" }
         end,
       })
     end,
