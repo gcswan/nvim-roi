@@ -69,3 +69,7 @@ map("n", "<leader>an", "<cmd>AerialNext<CR>", { desc = "Aerial Next Symbol" })
 map("n", "<leader>ap", "<cmd>AerialPrev<CR>", { desc = "Aerial Prev Symbol" })
 map("n", "<leader>aun", "<cmd>AerialNextUp<CR>", { desc = "Aerial Next Up Level" })
 map("n", "<leader>aup", "<cmd>AerialPrevUp<CR>", { desc = "Aerial Prev Up Level" })
+
+-- save
+map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write buffer" })
+map("n", "<leader>wa", "<cmd>wa<CR>", { desc = "Write all buffers" })

@@ -20,6 +20,8 @@ return {
       attach_mode = "global",
       backends = { "lsp", "treesitter", "markdown", "man" },
       show_guides = true,
+      manage_folds = true,
+      close_automatic_events = { "unfocus", "unsupported" },
       layout = {
         resize_to_content = false,
         win_opts = {
