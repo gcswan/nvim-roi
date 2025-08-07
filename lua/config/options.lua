@@ -29,3 +29,5 @@ vim.g.mason_node_executable = "/Users/gswan/.nvm/versions/node/v22.5.0/bin/node"
 
 -- automatically reload the buffer from disk on focus
 vim.opt.autoread = true
+
+-- Snacks.nvim bigfile detection configured in lua/plugins/snacks.lua

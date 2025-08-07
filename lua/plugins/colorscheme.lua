@@ -6,7 +6,7 @@ return {
     opts = {},
     config = function()
       require("tokyonight").setup({
-        style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+        style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
         transparent = true, -- Enable this to disable setting the background color
         terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
         styles = {
@@ -60,7 +60,7 @@ return {
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = false, -- invert background for search, diffs, statuslines and errors
-        contrast = "", -- can be "hard", "soft" or empty string
+        contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {},
         dim_inactive = true,
@@ -86,7 +86,7 @@ return {
         styles = {
           bold = true,
           italic = true,
-          transparency = false,
+          transparency = true,
         },
 
         groups = {
@@ -165,7 +165,7 @@ return {
       vim.g.gruvbox_material_ui_contrast = "soft"
       vim.g.gruvbox_material_background = "medium"
       vim.g.gruvbox_material_enable_italic = 1
-      vim.g.gruvbox_material_dim_inactive_windows = 1
+      vim.g.gruvbox_material_dim_inactive_windows = 0
       vim.g.gruvbox_material_better_performance = 1
     end,
   },
@@ -175,6 +175,11 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
+      no_underline = true,
+      no_italic = false,
+      flavour = "frappe",
+      terminal_colors = true,
+      transparent_background = true,
       integrations = {
         cmp = true,
         gitsigns = true,
@@ -282,20 +287,20 @@ return {
         -- This callback can be used to override highlights before they are applied.
         on_highlight = function(highlights, palette) end,
         -- Enable bold keywords.
-        bold_keywords = false,
+        bold_keywords = true,
         -- Enable italic comments.
         italic_comments = true,
         -- Enable editor background transparency.
         transparent = {
           -- Enable transparent background.
-          bg = false,
+          bg = true,
           -- Enable transparent background for floating windows.
-          float = false,
+          float = true,
         },
         -- Enable brighter float border.
-        bright_border = false,
+        bright_border = true,
         -- Reduce the overall amount of blue in the theme (diverges from base Nord).
-        reduced_blue = true,
+        reduced_blue = false,
         -- Swap the dark background with the normal one.
         swap_backgrounds = false,
         -- Cursorline options.  Also includes visual/selection.
@@ -307,7 +312,7 @@ return {
           -- Available styles: 'dark', 'light'.
           theme = "dark",
           -- Blending the cursorline bg with the buffer bg.
-          blend = 0.85,
+          blend = 0.1,
         },
         noice = {
           -- Available styles: `classic`, `flat`.
@@ -319,7 +324,7 @@ return {
         },
         leap = {
           -- Dims the backdrop when using leap.
-          dim_backdrop = false,
+          dim_backdrop = true,
         },
         ts_context = {
           -- Enables dark background for treesitter-context window
@@ -339,7 +344,7 @@ return {
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
         typeStyle = {},
-        transparent = false, -- do not set background color
+        transparent = true, -- do not set background color
         dimInactive = true, -- dim inactive window `:h hl-NormalNC`
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
         colors = { -- add/modify theme and palette colors
@@ -366,9 +371,9 @@ return {
 
       fm.setup({
         theme = "retrowave",
-        brightness = 0.05,
-        glow = true,
-        transparent = false,
+        brightness = 0.15,
+        glow = false,
+        transparent = true,
         styles = {
           comments = {},
           functions = {},
@@ -413,6 +418,40 @@ return {
       })
     end,
   },
+  {
+    "github-main-user/lytmode.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      local c = require("lytmode.colors").get_colors()
+      require("lytmode").setup({
+        -- Enable transparent background
+        transparent = true,
+
+        -- Enable italic comment
+        italic_comments = true,
+
+        -- Enable italic inlay type hints
+        italic_inlayhints = true,
+
+        -- Underline `@markup.link.*` variants
+        underline_links = true,
+
+        -- Disable nvim-tree background color
+        disable_nvimtree_bg = true,
+
+        -- Apply theme colors to terminal
+        terminal_colors = true,
+
+        -- Override highlight groups (see ./lua/lytmode/theme.lua)
+        group_overrides = {
+          -- this supports the same val table as vim.api.nvim_set_hl
+          -- use colors from this colorscheme by requiring lytmode.colors!
+          -- Cursor = { fg = c.lytDarkBlue, bg = c.lytLightGreen, bold = true },
+        },
+      })
+    end,
+  },
 
   {
     "LazyVim/LazyVim",
@@ -427,7 +466,8 @@ return {
       -- colorscheme = "gruvbox-material",
       -- colorscheme = "nordic",
       -- colorscheme = "fluoromachine",
-      colorscheme = "tokyonight",
+      colorscheme = "lytmode",
+      -- colorscheme = "tokyonight",
     },
   },
 }
