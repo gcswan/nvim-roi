@@ -73,3 +73,4 @@ map("n", "<leader>aup", "<cmd>AerialPrevUp<CR>", { desc = "Aerial Prev Up Level"
 -- save
 map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write buffer" })
 map("n", "<leader>wa", "<cmd>wa<CR>", { desc = "Write all buffers" })
+map("n", "<leader>wq", "<cmd>wq<CR>", { desc = "Write quit" })

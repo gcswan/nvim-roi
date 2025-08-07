@@ -466,8 +466,8 @@ return {
       -- colorscheme = "gruvbox-material",
       -- colorscheme = "nordic",
       -- colorscheme = "fluoromachine",
-      colorscheme = "lytmode",
-      -- colorscheme = "tokyonight",
+      -- colorscheme = "lytmode",
+      colorscheme = "tokyonight",
     },
   },
 }
