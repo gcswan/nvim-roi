@@ -17,6 +17,7 @@ return {
         end,
       },
       ["markdownlint-cli2"] = {
+        args = { "--config", "/Users/gswan/.config/nvim/.markdownlint.jsonc", "--fix" },
         condition = function(_, ctx)
           -- Skip if formatting is disabled
           if LazyVim.format.disabled then

@@ -32,7 +32,9 @@ return {
     opts.root_dir = opts.root_dir
       or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
     opts.sources = vim.list_extend(opts.sources or {}, {
-      nls.builtins.diagnostics.markdownlint_cli2,
+      nls.builtins.diagnostics.markdownlint_cli2.with({
+        args = { "--config", "/Users/gswan/.config/nvim/.markdownlint.jsonc", "--" },
+      }),
       nls.builtins.formatting.fish_indent,
       nls.builtins.diagnostics.fish,
       nls.builtins.formatting.stylua,
