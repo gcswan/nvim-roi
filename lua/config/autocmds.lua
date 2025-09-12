@@ -7,6 +7,12 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+-- trim all whitespace at the end of lines for included filetypes
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.py", "*.json", "*.tsx", "*.ts", "*.jsx", "*.js" },
+  command = "%s/\\s\\+$//e",
+})
+
 -- Auto-format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
@@ -29,10 +35,10 @@ vim.api.nvim_create_autocmd("FileType", {
     -- If LSP is globally disabled for markdown, mark this buffer
     if vim.g.markdown_lsp_disabled then
       vim.b[event.buf].markdown_lsp_disabled = true
-      
+
       -- Clear diagnostics for this buffer
       vim.diagnostic.reset(nil, event.buf)
-      
+
       -- Detach any existing marksman client
       local clients = vim.lsp.get_active_clients({ bufnr = event.buf })
       for _, client in ipairs(clients) do
@@ -69,7 +75,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
     local bufnr = event.buf
     if vim.bo[bufnr].filetype == "markdown" and (vim.g.markdown_lsp_disabled or vim.b[bufnr].markdown_lsp_disabled) then
       vim.diagnostic.reset(nil, bufnr)
-      
+
       -- Check if any marksman client got attached and detach it
       local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
       for _, client in ipairs(clients) do
