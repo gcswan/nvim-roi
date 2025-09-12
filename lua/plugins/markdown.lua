@@ -35,4 +35,5 @@ return {
       }):map("<leader>um")
     end,
   },
+  { "bullets-vim/bullets.vim" },
 }

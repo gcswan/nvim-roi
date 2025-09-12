@@ -52,6 +52,15 @@ vim.api.nvim_create_autocmd("FileType", {
   group = markdown_group,
 })
 
+vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("wrap_spell", { clear = true }),
+  pattern = { "text", "plaintex", "typst", "gitcommit" },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
+
 -- Prevent LSP from attaching to markdown files if disabled
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
