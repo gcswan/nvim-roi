@@ -48,6 +48,10 @@ map("n", "<leader>ap", "<cmd>AerialPrev<CR>", { desc = "Aerial Prev Symbol" })
 map("n", "<leader>aun", "<cmd>AerialNextUp<CR>", { desc = "Aerial Next Up Level" })
 map("n", "<leader>aup", "<cmd>AerialPrevUp<CR>", { desc = "Aerial Prev Up Level" })
 
+-- gitsigns hunk navigation
+map("n", "<leader>gh]", "<cmd>lua require('gitsigns').next_hunk()<CR>", { desc = "Next git hunk" })
+map("n", "<leader>gh[", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { desc = "Previous git hunk" })
+
 -- save
 map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write buffer" })
 map("n", "<leader>wa", "<cmd>wa<CR>", { desc = "Write all buffers" })
