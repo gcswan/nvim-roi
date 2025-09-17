@@ -17,6 +17,14 @@ return {
         ts_ls = {
           enabled = false,
         },
+        bashls = {
+          on_attach = function(_, bufnr)
+            local bufname = vim.api.nvim_buf_get_name(bufnr)
+            if string.match(bufname, "%.env") then
+              vim.diagnostic.enable(false, { bufnr = bufnr })
+            end
+          end,
+        },
         -- these settings come from the eslint docs
         -- eslint = {
         --   settings = {

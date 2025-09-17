@@ -19,7 +19,7 @@ return {
     "HakonHarnes/img-clip.nvim",
     opts = {},
     keys = {
-      { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from clipboard" },
+      { "<leader>pp", "<cmd>PasteImage<cr>", desc = "Paste image from clipboard" },
     },
   },
 }

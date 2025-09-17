@@ -48,11 +48,72 @@ map("n", "<leader>ap", "<cmd>AerialPrev<CR>", { desc = "Aerial Prev Symbol" })
 map("n", "<leader>aun", "<cmd>AerialNextUp<CR>", { desc = "Aerial Next Up Level" })
 map("n", "<leader>aup", "<cmd>AerialPrevUp<CR>", { desc = "Aerial Prev Up Level" })
 
--- gitsigns hunk navigation
-map("n", "<leader>gh]", "<cmd>lua require('gitsigns').next_hunk()<CR>", { desc = "Next git hunk" })
-map("n", "<leader>gh[", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { desc = "Previous git hunk" })
+-- Gitsigns keymaps
+map("n", "]h", function()
+  if vim.wo.diff then
+    vim.cmd.normal({ "]c", bang = true })
+  else
+    require("gitsigns").nav_hunk("next")
+  end
+end, { desc = "Next Hunk" })
+
+map("n", "[h", function()
+  if vim.wo.diff then
+    vim.cmd.normal({ "[c", bang = true })
+  else
+    require("gitsigns").nav_hunk("prev")
+  end
+end, { desc = "Prev Hunk" })
+
+map("n", "]H", function()
+  require("gitsigns").nav_hunk("last")
+end, { desc = "Last Hunk" })
+
+map("n", "[H", function()
+  require("gitsigns").nav_hunk("first")
+end, { desc = "First Hunk" })
+
+-- Hunk actions
+map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc = "Stage Hunk" })
+map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc = "Reset Hunk" })
+map("n", "<leader>ghS", function()
+  require("gitsigns").stage_buffer()
+end, { desc = "Stage Buffer" })
+map("n", "<leader>ghu", function()
+  require("gitsigns").undo_stage_hunk()
+end, { desc = "Undo Stage Hunk" })
+map("n", "<leader>ghR", function()
+  require("gitsigns").reset_buffer()
+end, { desc = "Reset Buffer" })
+
+-- Preview and blame
+map("n", "<leader>ghp", function()
+  require("gitsigns").preview_hunk_inline()
+end, { desc = "Preview Hunk Inline" })
+map("n", "<leader>ghP", function()
+  require("gitsigns").preview_hunk()
+end, { desc = "Preview Hunk" })
+map("n", "<leader>ghb", function()
+  require("gitsigns").blame_line({ full = true })
+end, { desc = "Blame Line" })
+map("n", "<leader>ghB", function()
+  require("gitsigns").blame()
+end, { desc = "Blame Buffer" })
+
+-- Diff
+map("n", "<leader>ghd", function()
+  require("gitsigns").diffthis()
+end, { desc = "Diff This" })
+map("n", "<leader>ghD", function()
+  require("gitsigns").diffthis("~")
+end, { desc = "Diff This ~" })
+
+-- Text object
+map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "GitSigns Select Hunk" })
 
 -- save
 map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write buffer" })
 map("n", "<leader>wa", "<cmd>wa<CR>", { desc = "Write all buffers" })
 map("n", "<leader>wq", "<cmd>wq<CR>", { desc = "Write quit" })
+
+map("n", "<leader>r", ":source $MYVIMRC<CR>", { desc = "Reload config" })
